@@ -104,6 +104,16 @@ public class Trie {
 			}
 			return al;
 		}
+		
+		public int countAllStrings() {
+			int numberOfStrings = 0;
+
+			// TODO recursively look through the trie for all isValidEnd==True nodes
+			//      which will give us a count of how many complete words there are
+			//      stored in the trie.
+			
+			return numberOfStrings;
+		}
 
 	}
 
@@ -159,7 +169,11 @@ public class Trie {
 	 * Q1: complete implementation
 	 */
 	public int countAllWords() {
-		return -1;
+		if (rootNode == null) {
+			return 0;
+		} else {
+			return rootNode.countAllStrings();
+		}
 	}
 
 	/*
