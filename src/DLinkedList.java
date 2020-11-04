@@ -20,7 +20,7 @@ public class DLinkedList {
 		public void setValue(int v) {
 			value = v;
 		}
-		
+
 		public Node getNextNode() {
 			return nextNode;
 		}
@@ -28,7 +28,7 @@ public class DLinkedList {
 		public void setNextNode(Node n) {
 			nextNode = n;
 		}
-		
+
 		public Node getPrevNode() {
 			return prevNode;
 		}
@@ -36,7 +36,7 @@ public class DLinkedList {
 		public void setPrevNode(Node n) {
 			prevNode = n;
 		}
-	
+
 	}
 
 	// Holds a reference to the head and tail of the list
@@ -47,25 +47,25 @@ public class DLinkedList {
 		headNode = null;
 		tailNode = null;
 	}
-	
-	public Object getHeadValue(){
+
+	public Object getHeadValue() {
 		if (headNode == null)
 			return null;
 		return headNode.value;
 	}
-	
-	public Object getTailValue(){
+
+	public Object getTailValue() {
 		if (tailNode == null)
 			return null;
 		return tailNode.value;
 	}
-	
+
 	public void addAtHead(int o) {
-		Node newNode = new Node(o); 
-		newNode.setNextNode(headNode); 
+		Node newNode = new Node(o);
+		newNode.setNextNode(headNode);
 		if (headNode != null)
 			headNode.setPrevNode(newNode);
-		headNode = newNode; 
+		headNode = newNode;
 		// special case for empty list
 		if (tailNode == null)
 			tailNode = newNode;
@@ -74,31 +74,31 @@ public class DLinkedList {
 	public void addAtTail(int o) {
 		Node newNode = new Node(o);
 		// this means that headNode == null too!
-		if(tailNode == null){
+		if (tailNode == null) {
 			tailNode = newNode;
 			headNode = newNode;
-		}else{
+		} else {
 			newNode.setPrevNode(tailNode);
 			tailNode.setNextNode(newNode);
 			tailNode = newNode;
 		}
 	}
-		
+
 	public int deleteAtHead() {
-		// list is empty 
-		if(headNode == null){
+		// list is empty
+		if (headNode == null) {
 			headNode = null;
 			tailNode = null;
 			return -1;
 		}
 		// singleton: must update tailnode too
-		if(headNode == tailNode){
+		if (headNode == tailNode) {
 			int res = headNode.getValue();
 			headNode = null;
 			tailNode = null;
 			return res;
 		}
-		
+
 		int res = headNode.getValue();
 		headNode = headNode.getNextNode();
 		headNode.setPrevNode(null);
@@ -106,14 +106,14 @@ public class DLinkedList {
 	}
 
 	public int deleteAtTail() {
-		// list is empty 
-		if(tailNode == null){
+		// list is empty
+		if (tailNode == null) {
 			headNode = null;
 			tailNode = null;
 			return -1;
 		}
 		// singleton: must update tailnode too
-		if(headNode == tailNode){
+		if (headNode == tailNode) {
 			int res = tailNode.getValue();
 			headNode = null;
 			tailNode = null;
@@ -124,29 +124,28 @@ public class DLinkedList {
 		tailNode.setNextNode(null);
 		return res;
 	}
-	
-	
-	public int delete(Node n){
-		if(n == null)
+
+	public int delete(Node n) {
+		if (n == null)
 			return -1;
 		Node next = n.getNextNode();
 		Node prev = n.getPrevNode();
 		int val = n.getValue();
-		if(prev != null)
+		if (prev != null)
 			prev.setNextNode(next);
-		if(next != null)
+		if (next != null)
 			next.setPrevNode(prev);
 		// deleting at the end
-		if(n == tailNode)
+		if (n == tailNode)
 			tailNode = prev;
 		// deleteing at beginning
-		if(n == headNode)
+		if (n == headNode)
 			headNode = next;
 		return val;
 	}
-	
-	public void insertAfter(Node n,int val){
-		if(n == null){ // this is the headNode
+
+	public void insertAfter(Node n, int val) {
+		if (n == null) { // this is the headNode
 			addAtHead(val);
 			return;
 		}
@@ -155,57 +154,65 @@ public class DLinkedList {
 		newNode.setPrevNode(n);
 		newNode.setNextNode(next);
 		n.setNextNode(newNode);
-		if(next == null){ // insert at tail
+		if (next == null) { // insert at tail
 			tailNode = newNode;
-		}else{
+		} else {
 			next.setPrevNode(newNode);
 		}
 	}
-	
+
 	// computes the size of the list
-	public int size(){
-		if(headNode == null)
+	public int size() {
+		if (headNode == null)
 			return 0;
 		Node n = headNode;
 		int size = 0;
-		while(n != null){
+		while (n != null) {
 			size++;
 			n = n.getNextNode();
 		}
 		return size;
 	}
-	
+
 	// Predicate to check if the linked list is sorted
-	public boolean isSorted(){
-		if(headNode == null || headNode.nextNode == null)
+	public boolean isSorted() {
+		if (headNode == null || headNode.nextNode == null)
 			return true;
 		Node i = headNode.nextNode;
-		while(i != null){
-			if(i.getValue() < i.getPrevNode().getValue())
+		while (i != null) {
+			if (i.getValue() < i.getPrevNode().getValue())
 				return false;
 			i = i.nextNode;
 		}
 		return true;
 	}
-	
+
 	// toString methods to override printing of object
-	public String toString(){
+	public String toString() {
 		Node n = headNode;
 		StringBuffer buf = new StringBuffer();
-		while(n != null){
+		while (n != null) {
 			buf.append(n.getValue());
 			buf.append(" ");
 			n = n.getNextNode();
 		}
 		return buf.toString();
 	}
-	
-	// Part 4: complete
-	public  void insertionSort(){
+
+	/**
+	 * Sorted the doubly linked list using the insertion-sort algorithm.
+	 * 
+	 * This is Question 4
+	 * 
+	 * Look at how insertionSort in ArraySort.java does insertion sort on arrays.
+	 * The task is to perform the same algorithm, but sorting nodes linked together
+	 * in a doubly linked list.
+	 */
+	public void insertionSort() {
 
 	}
-	
-	public static void main(String[] args){
+
+	public static void main(String[] args) {
 		DLinkedList d = new DLinkedList();
 		d.addAtHead(4);
 		d.addAtHead(1);
@@ -215,7 +222,5 @@ public class DLinkedList {
 		d.insertionSort();
 		System.out.println("After sorting: " + d);
 	}
-	
+
 }
-
-

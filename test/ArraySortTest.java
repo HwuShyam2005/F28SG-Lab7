@@ -62,10 +62,10 @@ public class ArraySortTest {
 		// step 2: check if the array is sorted
 		fail("not implemented yet");
 	}
-	
+
 	@Test
 	public void testInsertionSortRandom() {
-		int[] arr = { 4 , 2 , 1 , 8 };
+		int[] arr = { 4, 2, 1, 8 };
 		// step 1: sort the array with ArraySort.insertionSort(arr)
 
 		// step 2: check the length of the array
@@ -115,6 +115,9 @@ public class ArraySortTest {
 		arr.add(4);
 		arr.add(5);
 		// step 1: sort the array with ArraySort.quickSort(arr)
+		// ArrayList<Integer> result = ArraySort.quickSort(arr);
+		//
+		// now test the sorting of result
 
 		// step 2: check the length of the array
 		fail("not implemneted yet");
@@ -132,6 +135,7 @@ public class ArraySortTest {
 		arr.add(9);
 		arr.add(5);
 		// step 1: sort the array with ArraySort.quickSort(arr)
+		// and test the resulting list.
 
 		// step 2: check the length of the array
 		fail("not implemneted yet");
@@ -143,7 +147,7 @@ public class ArraySortTest {
 	@Test
 	public void testQuickSortEmpty() {
 		ArrayList<Integer> arr = new ArrayList<Integer>();
-		// step 1: sort the array with ArraySort.quickSort(arr)
+		// step 1: sort the array with Quick Sort in the same way as above.
 
 		// step 2: check the length of the array
 		fail("not implemneted yet");

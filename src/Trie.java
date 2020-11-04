@@ -11,6 +11,11 @@ public class Trie {
 		private TrieNode[] subnodes; // the subtrees that stem from this node
 		private boolean isValidEnd = false; // We need to know if this node represents the end point of a a valid word
 
+		/**
+		 * Constructor for a trie node. It initialises 26 children for A-Z child nodes.
+		 * 
+		 * @param c the character to exist inside the node
+		 */
 		public TrieNode(char c) {
 			value = c;
 			isValidEnd = false;
@@ -20,6 +25,11 @@ public class Trie {
 			}
 		}
 
+		/**
+		 * Inserts a word into a trie
+		 * 
+		 * @param s the word being inserted into the trie
+		 */
 		public void insert(String s) {
 			int positionOfNextNode = ((int) s.codePointAt(0)) - 97; // 97 is 'a' in ASCII //Where is this character
 			// based in the array
@@ -33,6 +43,12 @@ public class Trie {
 				subnodes[positionOfNextNode].insert(s.substring(1)); // add the substring from 1 on to that node
 		}
 
+		/**
+		 * Removes a word from a trie
+		 * 
+		 * @param s the word to remove
+		 * @return a trie node to return to a parent caller of this method
+		 */
 		public TrieNode delete(String s) {
 			// similar to deleting a linked list, we rebuild the Trie as we return.
 			if (s.length() == 0) { // this is the last char
@@ -65,6 +81,12 @@ public class Trie {
 			return this;
 		}
 
+		/**
+		 * Searches for a word in a trie
+		 * 
+		 * @param s the word being searched for
+		 * @return true if te word is in the trie, false otherwise
+		 */
 		public boolean search(String s) {
 			int positionOfNextNode = ((int) s.codePointAt(0)) - 97; // 97 is 'a' in ASCII
 			if (subnodes[positionOfNextNode] == null) {
@@ -78,8 +100,13 @@ public class Trie {
 			}
 		}
 
-		public ArrayList returnAllStrings() {
-			ArrayList al = new ArrayList();
+		/**
+		 * Extracts the words from the trie
+		 * 
+		 * @return a list of words (Strings)
+		 */
+		public ArrayList<String> returnAllWords() {
+			ArrayList<String> al = new ArrayList<>();
 			// if this is the root node, then we don't want to add that character on
 			String prefixString = "";
 			if (value == ROOT_NODE_CHAR) {
@@ -95,8 +122,8 @@ public class Trie {
 			for (int i = 0; i < subnodes.length; i++) {
 				if (subnodes[i] != null) {
 					// there be substrings
-					ArrayList tempAL = subnodes[i].returnAllStrings();
-					Iterator it = tempAL.iterator();
+					ArrayList<String> tempAL = subnodes[i].returnAllWords();
+					Iterator<String> it = tempAL.iterator();
 					while (it.hasNext()) {
 						al.add(prefixString + it.next()); // add our prefix onto each suffix
 					}
@@ -104,27 +131,33 @@ public class Trie {
 			}
 			return al;
 		}
-		
-		public int countAllStrings() {
-			int numberOfStrings = 0;
+
+		/**
+		 * Counts all the words in the trie
+		 * 
+		 * @return the number of words in the trie
+		 */
+		public int countAllWords() {
+			int numberOfWords = 0;
 
 			// TODO recursively look through the trie for all isValidEnd==True nodes
-			//      which will give us a count of how many complete words there are
-			//      stored in the trie.
-			
-			return numberOfStrings;
-		}
+			// which will give us a count of how many complete words there are
+			// stored in the trie.
 
+			return numberOfWords;
+		}
 	}
 
-	// Prints all of the words in the Trie to the console
+	/**
+	 * Prints all of the words in the Trie to the console
+	 */
 	public void printAllWords() {
 		if (rootNode == null) {
 			return;
 		} else {
-			ArrayList al = rootNode.returnAllStrings();
+			ArrayList<String> al = rootNode.returnAllWords();
 
-			Iterator it = al.iterator();
+			Iterator<String> it = al.iterator();
 			while (it.hasNext()) {
 				System.out.println(it.next());
 			}
@@ -134,8 +167,7 @@ public class Trie {
 	/**
 	 * inserts a word into the trie
 	 * 
-	 * @param s
-	 *            the word to be inserted
+	 * @param s the word to be inserted
 	 */
 	public void insert(String s) {
 		if (rootNode == null) {
@@ -147,8 +179,7 @@ public class Trie {
 	/**
 	 * search for a word in the trie
 	 * 
-	 * @param s
-	 *            the word being searched for
+	 * @param s the word being searched for
 	 * @return true if word is in thrie, false otherwise
 	 */
 	public boolean search(String s) {
@@ -158,26 +189,35 @@ public class Trie {
 	/**
 	 * delete a word from the trie
 	 * 
-	 * @param s
-	 *            the word to be deleted
+	 * @param s the word to be deleted
 	 */
 	public void delete(String s) {
 		rootNode.delete(s.toLowerCase());
 	}
 
-	/*
-	 * Q1: complete implementation
+	/**
+	 * Count all the words in a trie
+	 * 
+	 * This is Question 1
+	 * 
+	 * @return the count of words in the trie
 	 */
 	public int countAllWords() {
 		if (rootNode == null) {
 			return 0;
 		} else {
-			return rootNode.countAllStrings();
+			return rootNode.countAllWords();
 		}
 	}
 
-	/*
-	 * Optional: complete implementation
+	/**
+	 * Find if a given string is a prefix of a word in a trie
+	 * 
+	 * Option task.
+	 * 
+	 * @param str the prefix to search for
+	 * @return true if str is a prefix of at least one word in the true, false
+	 *         otherwise
 	 */
 	public boolean areWordsWithPrefix(String str) {
 		return false;

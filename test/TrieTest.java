@@ -8,55 +8,32 @@ public class TrieTest {
 	/*
 	 * Part 1: complete
 	 */
-	
+
 	Trie trie;
-	
+
 	@Before
-	public void setup(){
+	public void setup() {
 		trie = new Trie();
 	}
-	
-	
+
 	@Test
 	public void countAllWordsEmptyTest() {
 		// test countAllWords() for an empty trie
 		fail("not implemented yet");
 	}
-	
+
 	@Test
-	public void  countAllWordsTest() {
-		// add some words to the trie
-		
-		// test countAllWords() for the trie
+	public void countAllWordsTest() {
+		// step 1: add some words to the trie
+
+		// step 2: test countAllWords() for the trie
 		fail("not implemented yet");
 	}
-	
-	/*
-	 * Optional part
-	 */
-	
-//	@Test
-//	public void  areWordsWithPrefixTestTrue() {
-//		trie.insertString("balls");
-//		trie.insertString("balloon");
-//		trie.insertString("ball");
-//		trie.insertString("football");
-//		assertTrue(trie.areWordsWithPrefix("ball"));
-//	}
-	
-//	@Test
-//	public void  areWordsWithPrefixTestFalse() {
-//		trie.insertString("balls");
-//		trie.insertString("balloon");
-//		trie.insertString("ball");
-//		trie.insertString("football");
-//		assertFalse(trie.areWordsWithPrefix("baboon"));
-//	}
-	
+
 	/*
 	 * More trie tests
 	 */
-	
+
 	@Test
 	public void searchTrue() {
 		trie.insert("balls");
@@ -66,13 +43,13 @@ public class TrieTest {
 		assertTrue(trie.search("balloon"));
 		assertTrue(trie.search("a"));
 	}
-	
+
 	@Test
 	public void searchFalse() {
 		trie.insert("balls");
 		assertFalse(trie.search("bug"));
 	}
-	
+
 	@Test
 	public void deleteSearch() {
 		trie.insert("balls");
@@ -92,6 +69,27 @@ public class TrieTest {
 		assertFalse(trie.search("a"));
 	}
 	
-	
+	/*
+	 * Optional part: uncomment the two tests below if you wish to test your
+	 * implementation.
+	 */
+
+//	@Test
+//	public void  areWordsWithPrefixTestTrue() {
+//		trie.insertString("balls");
+//		trie.insertString("balloon");
+//		trie.insertString("ball");
+//		trie.insertString("football");
+//		assertTrue(trie.areWordsWithPrefix("ball"));
+//	}
+
+//	@Test
+//	public void  areWordsWithPrefixTestFalse() {
+//		trie.insertString("balls");
+//		trie.insertString("balloon");
+//		trie.insertString("ball");
+//		trie.insertString("football");
+//		assertFalse(trie.areWordsWithPrefix("baboon"));
+//	}
 
 }
