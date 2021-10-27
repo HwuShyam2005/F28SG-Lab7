@@ -99,6 +99,29 @@ public class Trie {
 				}
 			}
 		}
+		
+		// Optional challenge
+		//
+		// "b" is a prefix of "boxed"
+		// "bo" is a prefix of "boxed"
+		// "box" is a prefix of "boxed"
+		// "ba" is not a prefix of "boxed"
+		// "a" is not a prefix of "boxed"
+		public ArrayList<String> wordsWithPrefix(String s) {
+			// 97 is 'a' in ASCII
+			int positionOfNextNode = ((int) s.toLowerCase().codePointAt(0)) - 97;
+			/* TODO */
+			return null;
+		}
+		
+		/**
+		 * Optional challenge.
+		 */
+		public boolean areWordsWithPrefix(String s){
+			int positionOfNextNode = ((int)s.codePointAt(0)) - 97; //97 is 'a' in ASCII
+			/* TODO */
+			return false;
+		}
 
 		/**
 		 * Extracts the words from the trie
@@ -134,6 +157,8 @@ public class Trie {
 
 		/**
 		 * Counts all the words in the trie
+		 * 
+		 * Implement this for Q1
 		 * 
 		 * @return the number of words in the trie
 		 */
@@ -198,7 +223,7 @@ public class Trie {
 	/**
 	 * Count all the words in a trie
 	 * 
-	 * This is Question 1
+	 * This is part of Question 1
 	 * 
 	 * @return the count of words in the trie
 	 */
@@ -209,11 +234,33 @@ public class Trie {
 			return rootNode.countAllWords();
 		}
 	}
+	
+	/**
+	 * Find if all strings in a trie that have the given prefix
+	 * 
+	 * Optional challenge.
+	 * 
+	 * For a Trie containing "boxed"
+	 * 
+	 *     wordsWithPrefix("bo") should return ["boxed"]
+	 *     wordsWithPrefix("boxe") should return ["boxed"]
+	 * 
+	 * @param str the prefix to search for
+	 * @return the list of strings that have str as its prefix
+	 */
+	public ArrayList<String> wordsWithPrefix(String str) {
+		if (rootNode == null) {
+			return new ArrayList<>();
+		}
+		else {
+			return rootNode.wordsWithPrefix(str);
+		}
+	}
 
 	/**
 	 * Find if a given string is a prefix of a word in a trie
 	 * 
-	 * Option task.
+	 * Optional challenge.
 	 * 
 	 * @param str the prefix to search for
 	 * @return true if str is a prefix of at least one word in the true, false
