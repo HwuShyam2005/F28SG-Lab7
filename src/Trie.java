@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Trie {
+public class Trie implements TrieADT {
 
 	private TrieNode rootNode = null;
 	static private final char ROOT_NODE_CHAR = '*'; // A dummy char to represent the Root Node
