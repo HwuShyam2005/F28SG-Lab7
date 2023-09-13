@@ -207,6 +207,10 @@ public class DLinkedList {
 	 * Look at how insertionSort in ArraySort.java does insertion sort on arrays.
 	 * The task is to perform the same algorithm, but sorting nodes linked together
 	 * in a doubly linked list.
+	 * 
+	 * TODO Where N is the number of elements in the list the complexity is:
+	 *
+	 * O(?)
 	 */
 	public void insertionSort() {
 

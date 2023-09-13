@@ -21,13 +21,28 @@ public class ArraySort {
 	 * 
 	 * This is Question 3
 	 * 
+	 * TODO Where N is the number of elements in the array 'arr' the complexity is:
+	 *
+	 * O(?)
+	 * 
 	 * @param arr the array to be sorted in-place
 	 */
 	public static void bubbleSort(int[] arr) {
 
 	}
 
-	// Part 5 : complete implementation
+	/** Quick sort of an array. This method creates a new array with
+	 * its values sorted, based on the values in the unsorted input array S.
+	 * 
+	 * This is Question 5
+	 * 
+	 * TODO Where N is the number of elements in the array 'S' the complexity is:
+	 *
+	 * O(?)
+	 * 
+	 * @param S the unsorted input array
+	 * @return the sorted output array
+	 */
 	public static ArrayList<Integer> quickSort(ArrayList<Integer> S) {
 
 		return null; // TODO
