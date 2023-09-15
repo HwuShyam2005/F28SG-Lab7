@@ -85,7 +85,7 @@ public class Trie implements TrieADT {
 		 * Searches for a word in a trie
 		 * 
 		 * @param s the word being searched for
-		 * @return true if te word is in the trie, false otherwise
+		 * @return true if the word is in the trie, false otherwise
 		 */
 		public boolean search(String s) {
 			int positionOfNextNode = ((int) s.codePointAt(0)) - 97; // 97 is 'a' in ASCII
@@ -236,7 +236,7 @@ public class Trie implements TrieADT {
 	}
 	
 	/**
-	 * Find if all strings in a trie that have the given prefix
+	 * Find all words in a trie that have the given prefix
 	 * 
 	 * Optional challenge.
 	 * 
@@ -246,7 +246,7 @@ public class Trie implements TrieADT {
 	 *     wordsWithPrefix("boxe") should return ["boxed"]
 	 * 
 	 * @param str the prefix to search for
-	 * @return the list of strings that have str as its prefix
+	 * @return the list of words that have str as its prefix
 	 */
 	public ArrayList<String> wordsWithPrefix(String str) {
 		if (rootNode == null) {
