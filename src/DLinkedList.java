@@ -213,6 +213,25 @@ public class DLinkedList {
 	 * O(?)
 	 */
 	public void insertionSort() {
+		//INITIALIZATION OF HEAD
+				Node head = headNode;
+		//INITIALIZATION OF TAIL		
+				Node tail = tailNode;
+		//CHECKING IF THE LINKED LIST IS EMPTY OR NOT
+				if (head != tail) {
+		//INITIALIZING THE PRESENT ELEMENT POINTER			
+					Node present = head.nextNode;
+		//ITERATING THROUGHOUT THE LINK LIST UNTILL PRESENT IS EMPTY			
+					while (present != null) {
+						Node temp = present.getPrevNode();
+						while (temp !=null && present.getValue() < temp.getValue()) {
+							temp = temp.prevNode;
+						}
+						int var_1 = delete(present);
+						insertAfter(temp, var_1);
+						present = present.nextNode;
+					}
+				}
 
 	}
 

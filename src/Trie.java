@@ -163,12 +163,22 @@ public class Trie implements TrieADT {
 		 * @return the number of words in the trie
 		 */
 		public int countAllWords() {
+			//INITIALIZING A COUNTER
 			int numberOfWords = 0;
-
-			// TODO recursively look through the trie for all isValidEnd==True nodes
-			// which will give us a count of how many complete words there are
-			// stored in the trie.
-
+			//IF WE GET THE END OF AN STRING
+			if (isValidEnd) {
+				//INCREMENTING 
+				numberOfWords+=1;
+			}
+			//LOOKING FOR MORE SUBSTRING
+			for (int i=0;i<subnodes.length;i++) {
+				//counting all substrings and adding it in total counter
+				//COUNTING ALL OF THE SUBSTRINGS AND ADDING IT IN THE TOTAL COUNTER
+				if(subnodes[i]!=null) {
+				int temp = subnodes[i].countAllWords();
+				numberOfWords+=temp;
+			}
+			}
 			return numberOfWords;
 		}
 	}
