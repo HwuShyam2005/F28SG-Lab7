@@ -18,7 +18,7 @@ public class TrieTest {
 	public void setup() {
 		trie = new Trie();
 	}
-	
+
 	/**
 	 * Tests for countAllWords() in the Trie class
 	 * 
@@ -28,15 +28,17 @@ public class TrieTest {
 	@Test
 	public void countAllWordsEmptyTest() {
 		// test countAllWords() for an empty trie
-		fail("not implemented yet");
+		assertEquals(0, trie.countAllWords());
+
 	}
 
 	@Test
 	public void countAllWordsTest() {
 		// step 1: add some words to the trie
-
+		trie.insert("dog");
+		trie.insert("cat");
 		// step 2: test countAllWords() for the trie
-		fail("not implemented yet");
+		assertEquals(2, trie.countAllWords());
 	}
 
 	/*
@@ -77,7 +79,7 @@ public class TrieTest {
 		assertFalse(trie.search("balloon"));
 		assertFalse(trie.search("a"));
 	}
-	
+
 	/*
 	 * Optional part: uncomment the four tests below if you wish to test your
 	 * implementation.
@@ -100,7 +102,7 @@ public class TrieTest {
 //		trie.insertString("football");
 //		assertFalse(trie.areWordsWithPrefix("baboon"));
 //	}
-	
+
 //	@Test
 //	public void wordsWithPrefixTestTrue() {
 //		trie.insert("balls");

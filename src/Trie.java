@@ -172,7 +172,6 @@ public class Trie implements TrieADT {
 			}
 			//LOOKING FOR MORE SUBSTRING
 			for (int i=0;i<subnodes.length;i++) {
-				//counting all substrings and adding it in total counter
 				//COUNTING ALL OF THE SUBSTRINGS AND ADDING IT IN THE TOTAL COUNTER
 				if(subnodes[i]!=null) {
 				int temp = subnodes[i].countAllWords();
